@@ -28,12 +28,11 @@
   "in"
   "all"
   "any"
+  "none"
   "them"
+  "filesize"
+  "entrypoint"
 ] @keyword.operator
-
-; Built-in identifiers
-(filesize) @function.builtin
-(entrypoint) @function.builtin
 
 ; String modifiers
 [
