@@ -1,0 +1,36 @@
+{
+  "grammars": [
+    {
+      "name": "yara",
+      "camelcase": "Yara",
+      "scope": "source.yara",
+      "file-types": [
+        ".yara",
+        ".yar"
+      ],
+      "injection-regex": "^yara$"
+    }
+  ],
+  "metadata": {
+    "version": "0.0.1",
+    "license": "MIT",
+    "description": "Tree-sitter plugin for the Yara language.",
+    "authors": [
+      {
+        "name": "egibs",
+        "email": "evan@egibs.xyz"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/egibs/tree-sitter-yara"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}
