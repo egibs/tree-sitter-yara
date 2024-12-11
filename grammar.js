@@ -198,8 +198,20 @@ module.exports = grammar({
 
     condition_section: ($) => seq("condition", $._colon, $._expression),
 
+    string_reference: ($) =>
+      prec.right(
+        1,
+        choice(
+          seq("$", $.identifier),
+          seq("$", "*"),
+          seq("@", $.string_identifier),
+          seq("#", $.string_identifier),
+        ),
+      ),
+
     _expression: ($) =>
       choice(
+        $.string_reference,
         $.identifier,
         $.string_identifier,
         $.integer_literal,

@@ -75,8 +75,19 @@
   "false"
 ] @constant.boolean
 
+; Keywords and special identifiers
+[
+  "them"
+  "all"
+  "any"
+  "none"
+] @keyword.operator
+
+
 ; String identifiers
-(string_identifier) @variable
+(string_identifier) @variable.special
+(string_reference
+  [(identifier) (string_identifier)] @variable.special)
 
 ; Built-ins
 [
@@ -89,25 +100,26 @@
   [(identifier) (tag)] @tag)
 
 ; Punctuation and delimiters
-_equal @punctuation.delimiter
-_colon @punctuation.delimiter
-_lbrace @punctuation.delimiter
-_rbrace @punctuation.delimiter
-_lbrack @punctuation.delimiter
-_rbrack @punctuation.delimiter
-_lparen @punctuation.delimiter
-_rparen @punctuation.delimiter
-_dollar @punctuation.delimiter
-_hash @punctuation.delimiter
-_at @punctuation.delimiter
-_range @punctuation.delimiter
-_question @punctuation.delimiter
-_pipe @punctuation.delimiter
-_comma @punctuation.delimiter
-_bang @punctuation.delimiter
-_slash @punctuation.delimiter
-_quote @punctuation.delimiter
-_squote @punctuation.delimiter
+[
+  "="
+  ":"
+  "{"
+  "}"
+  "["
+  "]"
+  "("
+  ")"
+  "$"
+  "#"
+  "@"
+  ".."
+  "|"
+  ","
+  "!"
+  "/"
+  "\""
+  "'"
+] @punctuation.delimiter
 
 ; Rule names
 (rule_definition
