@@ -12,7 +12,7 @@
   "condition"
 ] @keyword
 
-; Comparison and logical operators
+; Operators
 [
   "matches"
   "contains"
@@ -39,10 +39,6 @@
   "in"
 ] @keyword.operator
 
-; Meta fields
-(meta_definition
-  key: (identifier) @property)
-
 ; String modifiers
 [
   "wide"
@@ -61,7 +57,7 @@
 ; Strings
 (double_quoted_string) @string
 (single_quoted_string) @string
-(escape) @string.escape
+(escape_sequence) @string.escape
 
 ; Hex strings
 (hex_string) @string.special
@@ -73,16 +69,17 @@
 (regex_string) @string.regexp
 (pattern) @string.regexp
 
-; Boolean values
-(boolean_literal) @constant.boolean
+; Boolean literals
+[
+  "true"
+  "false"
+] @constant.boolean
 
 ; String identifiers
 (string_identifier) @variable
 
 ; Built-ins
 [
-  "true"
-  "false"
   "filesize"
   "entrypoint"
 ] @constant.builtin
@@ -91,9 +88,31 @@
 (tag_list
   [(identifier) (tag)] @tag)
 
-; Punctuation
-["{" "}" "[" "]" "(" ")" "$" "#" "@" "=" ":" "," ".." "?" "|"] @punctuation.delimiter
+; Punctuation and delimiters
+_equal @punctuation.delimiter
+_colon @punctuation.delimiter
+_lbrace @punctuation.delimiter
+_rbrace @punctuation.delimiter
+_lbrack @punctuation.delimiter
+_rbrack @punctuation.delimiter
+_lparen @punctuation.delimiter
+_rparen @punctuation.delimiter
+_dollar @punctuation.delimiter
+_hash @punctuation.delimiter
+_at @punctuation.delimiter
+_range @punctuation.delimiter
+_question @punctuation.delimiter
+_pipe @punctuation.delimiter
+_comma @punctuation.delimiter
+_bang @punctuation.delimiter
+_slash @punctuation.delimiter
+_quote @punctuation.delimiter
+_squote @punctuation.delimiter
 
-; Rule name
+; Rule names
 (rule_definition
   name: (identifier) @function)
+
+; Meta definitions
+(meta_definition
+  key: (identifier) @property)

@@ -16,11 +16,11 @@
             "named": true
           },
           {
-            "type": "entrypoint_literal",
+            "type": "entrypoint",
             "named": true
           },
           {
-            "type": "filesize_literal",
+            "type": "filesize",
             "named": true
           },
           {
@@ -176,11 +176,11 @@
             "named": true
           },
           {
-            "type": "entrypoint_literal",
+            "type": "entrypoint",
             "named": true
           },
           {
-            "type": "filesize_literal",
+            "type": "filesize",
             "named": true
           },
           {
@@ -257,11 +257,11 @@
           "named": true
         },
         {
-          "type": "entrypoint_literal",
+          "type": "entrypoint",
           "named": true
         },
         {
-          "type": "filesize_literal",
+          "type": "filesize",
           "named": true
         },
         {
@@ -324,21 +324,11 @@
       "required": false,
       "types": [
         {
-          "type": "escape",
+          "type": "escape_sequence",
           "named": true
         }
       ]
     }
-  },
-  {
-    "type": "entrypoint_literal",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "filesize_literal",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "for_expression",
@@ -357,11 +347,11 @@
           "named": true
         },
         {
-          "type": "entrypoint_literal",
+          "type": "entrypoint",
           "named": true
         },
         {
-          "type": "filesize_literal",
+          "type": "filesize",
           "named": true
         },
         {
@@ -440,11 +430,11 @@
           "named": true
         },
         {
-          "type": "entrypoint_literal",
+          "type": "entrypoint",
           "named": true
         },
         {
-          "type": "filesize_literal",
+          "type": "filesize",
           "named": true
         },
         {
@@ -511,7 +501,7 @@
     }
   },
   {
-    "type": "hex_alt_sequence",
+    "type": "hex_alternative",
     "named": true,
     "fields": {},
     "children": {
@@ -520,10 +510,6 @@
       "types": [
         {
           "type": "hex_byte",
-          "named": true
-        },
-        {
-          "type": "hex_wildcard",
           "named": true
         }
       ]
@@ -553,7 +539,7 @@
       "required": true,
       "types": [
         {
-          "type": "hex_alt_sequence",
+          "type": "hex_alternative",
           "named": true
         },
         {
@@ -701,11 +687,11 @@
           "named": true
         },
         {
-          "type": "entrypoint_literal",
+          "type": "entrypoint",
           "named": true
         },
         {
-          "type": "filesize_literal",
+          "type": "filesize",
           "named": true
         },
         {
@@ -760,6 +746,21 @@
     }
   },
   {
+    "type": "pattern",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "quantifier",
     "named": true,
     "fields": {},
@@ -799,10 +800,6 @@
       "types": [
         {
           "type": "pattern",
-          "named": true
-        },
-        {
-          "type": "string_delimiter",
           "named": true
         },
         {
@@ -880,7 +877,7 @@
       "required": false,
       "types": [
         {
-          "type": "escape",
+          "type": "escape_sequence",
           "named": true
         }
       ]
@@ -1100,6 +1097,10 @@
       "required": true,
       "types": [
         {
+          "type": "identifier",
+          "named": true
+        },
+        {
           "type": "tag",
           "named": true
         }
@@ -1142,11 +1143,11 @@
             "named": true
           },
           {
-            "type": "entrypoint_literal",
+            "type": "entrypoint",
             "named": true
           },
           {
-            "type": "filesize_literal",
+            "type": "filesize",
             "named": true
           },
           {
@@ -1272,6 +1273,10 @@
     "named": false
   },
   {
+    "type": "/",
+    "named": false
+  },
+  {
     "type": ":",
     "named": false
   },
@@ -1369,10 +1374,10 @@
   },
   {
     "type": "entrypoint",
-    "named": false
+    "named": true
   },
   {
-    "type": "escape",
+    "type": "escape_sequence",
     "named": true
   },
   {
@@ -1381,7 +1386,7 @@
   },
   {
     "type": "filesize",
-    "named": false
+    "named": true
   },
   {
     "type": "for",
@@ -1448,10 +1453,6 @@
     "named": false
   },
   {
-    "type": "none",
-    "named": false
-  },
-  {
     "type": "not",
     "named": false
   },
@@ -1464,10 +1465,6 @@
     "named": false
   },
   {
-    "type": "pattern",
-    "named": true
-  },
-  {
     "type": "private",
     "named": false
   },
@@ -1478,10 +1475,6 @@
   {
     "type": "startswith",
     "named": false
-  },
-  {
-    "type": "string_delimiter",
-    "named": true
   },
   {
     "type": "strings",
