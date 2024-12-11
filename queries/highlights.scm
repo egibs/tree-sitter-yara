@@ -31,6 +31,10 @@
   "them"
 ] @keyword.operator
 
+; Built-in identifiers
+(filesize) @function.builtin
+(entrypoint) @function.builtin
+
 ; String modifiers
 [
   "ascii"
@@ -59,11 +63,6 @@
   (identifier)? @string.special)
 
 ; Constants
-[
-  "filesize"
-  "entrypoint"
-] @constant.builtin
-
 (boolean_literal) @constant.builtin
 
 (integer_literal) @constant.numeric

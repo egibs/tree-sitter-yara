@@ -20,7 +20,7 @@ const PREC = {
 module.exports = grammar({
   name: "yara",
 
-  extras: ($) => [$.comment, /[\s\f\uFEFF\u2060\u200B]|\r?\n/],
+  extras: ($) => [/[\s\f\uFEFF\u2060\u200B]|\r?\n/, $.comment],
 
   word: ($) => $.identifier,
 
@@ -44,7 +44,8 @@ module.exports = grammar({
         field("body", $.rule_body),
       ),
 
-    tag_list: ($) => seq(":", $.identifier, repeat(alias($.identifier, $.tag))),
+    tag_list: ($) =>
+      prec.left(seq(":", $.identifier, repeat(seq(/\s+/, $.identifier)))),
 
     rule_body: ($) =>
       prec.right(
@@ -175,8 +176,8 @@ module.exports = grammar({
         $.string_count,
         $.string_offset,
         $.string_length,
-        $.filesize,
-        $.entrypoint,
+        $.filesize_literal,
+        $.entrypoint_literal,
         $.for_expression,
         $.for_of_expression,
         $.of_expression,
@@ -185,8 +186,8 @@ module.exports = grammar({
         $.binary_expression,
       ),
 
-    filesize: (_) => "filesize",
-    entrypoint: (_) => "entrypoint",
+    filesize_literal: (_) => alias("filesize", $.filesize),
+    entrypoint_literal: (_) => alias("entrypoint", $.entrypoint),
 
     size_unit: (_) => choice("KB", "MB", "GB"),
 
