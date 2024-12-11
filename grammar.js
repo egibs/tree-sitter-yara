@@ -269,7 +269,8 @@ module.exports = grammar({
 
     of_expression: ($) => seq($.quantifier, "of", $.string_set),
 
-    quantifier: ($) => choice("all", "any", seq($.integer_literal, "of")),
+    quantifier: ($) =>
+      choice("all", "any", "none", seq($.integer_literal, "of")),
 
     string_set: ($) =>
       choice(
