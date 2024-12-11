@@ -7,7 +7,7 @@ private global rule test: tag1 {
     all of them
 }
 
-private rule test2: tag2 tag3 {
+private rule test2: tag2 tag3 tag0 {
   strings:
     $hello = "hello world"
     $ = "test"

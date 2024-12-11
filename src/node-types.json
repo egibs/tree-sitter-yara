@@ -16,11 +16,11 @@
             "named": true
           },
           {
-            "type": "entrypoint",
+            "type": "entrypoint_literal",
             "named": true
           },
           {
-            "type": "filesize",
+            "type": "filesize_literal",
             "named": true
           },
           {
@@ -176,11 +176,11 @@
             "named": true
           },
           {
-            "type": "entrypoint",
+            "type": "entrypoint_literal",
             "named": true
           },
           {
-            "type": "filesize",
+            "type": "filesize_literal",
             "named": true
           },
           {
@@ -257,11 +257,11 @@
           "named": true
         },
         {
-          "type": "entrypoint",
+          "type": "entrypoint_literal",
           "named": true
         },
         {
-          "type": "filesize",
+          "type": "filesize_literal",
           "named": true
         },
         {
@@ -331,6 +331,16 @@
     }
   },
   {
+    "type": "entrypoint_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "filesize_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "for_expression",
     "named": true,
     "fields": {},
@@ -347,11 +357,11 @@
           "named": true
         },
         {
-          "type": "entrypoint",
+          "type": "entrypoint_literal",
           "named": true
         },
         {
-          "type": "filesize",
+          "type": "filesize_literal",
           "named": true
         },
         {
@@ -430,11 +440,11 @@
           "named": true
         },
         {
-          "type": "entrypoint",
+          "type": "entrypoint_literal",
           "named": true
         },
         {
-          "type": "filesize",
+          "type": "filesize_literal",
           "named": true
         },
         {
@@ -687,11 +697,11 @@
           "named": true
         },
         {
-          "type": "entrypoint",
+          "type": "entrypoint_literal",
           "named": true
         },
         {
-          "type": "filesize",
+          "type": "filesize_literal",
           "named": true
         },
         {
@@ -1097,10 +1107,6 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "tag",
           "named": true
         }
@@ -1143,11 +1149,11 @@
             "named": true
           },
           {
-            "type": "entrypoint",
+            "type": "entrypoint_literal",
             "named": true
           },
           {
-            "type": "filesize",
+            "type": "filesize_literal",
             "named": true
           },
           {
@@ -1374,7 +1380,7 @@
   },
   {
     "type": "entrypoint",
-    "named": true
+    "named": false
   },
   {
     "type": "escape_sequence",
@@ -1386,7 +1392,7 @@
   },
   {
     "type": "filesize",
-    "named": true
+    "named": false
   },
   {
     "type": "for",
@@ -1450,6 +1456,10 @@
   },
   {
     "type": "nocase",
+    "named": false
+  },
+  {
+    "type": "none",
     "named": false
   },
   {

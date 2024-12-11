@@ -101,84 +101,143 @@
           ]
         },
         {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
           "type": "FIELD",
           "name": "body",
           "content": {
             "type": "SYMBOL",
             "name": "rule_body"
           }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
         }
       ]
     },
     "tag_list": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": ":"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "ALIAS",
-            "content": {
-              "type": "SYMBOL",
-              "name": "identifier"
-            },
-            "named": true,
-            "value": "tag"
-          }
-        }
-      ]
-    },
-    "rule_body": {
-      "type": "PREC_RIGHT",
+      "type": "PREC_LEFT",
       "value": 0,
       "content": {
         "type": "SEQ",
         "members": [
           {
             "type": "STRING",
-            "value": "{"
+            "value": ":"
           },
           {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "meta_section"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
+            "type": "REPEAT1",
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "PATTERN",
+                      "value": "\\s+"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                },
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  },
+                  "named": true,
+                  "value": "tag"
+                }
+              ]
+            }
           },
           {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "strings_section"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          },
-          {
-            "type": "SYMBOL",
-            "name": "condition_section"
-          },
-          {
-            "type": "STRING",
-            "value": "}"
+            "type": "PATTERN",
+            "value": "\\s+"
           }
         ]
       }
+    },
+    "rule_body": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "meta_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "strings_section"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "condition_section"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "meta_section"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "strings_section"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "condition_section"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "strings_section"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "condition_section"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "condition_section"
+        }
+      ]
     },
     "meta_section": {
       "type": "SEQ",
@@ -786,11 +845,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "filesize"
+          "name": "filesize_literal"
         },
         {
           "type": "SYMBOL",
-          "name": "entrypoint"
+          "name": "entrypoint_literal"
         },
         {
           "type": "SYMBOL",
@@ -818,12 +877,22 @@
         }
       ]
     },
-    "filesize": {
-      "type": "STRING",
+    "filesize_literal": {
+      "type": "ALIAS",
+      "content": {
+        "type": "STRING",
+        "value": "filesize"
+      },
+      "named": false,
       "value": "filesize"
     },
-    "entrypoint": {
-      "type": "STRING",
+    "entrypoint_literal": {
+      "type": "ALIAS",
+      "content": {
+        "type": "STRING",
+        "value": "entrypoint"
+      },
+      "named": false,
       "value": "entrypoint"
     },
     "size_unit": {
@@ -1062,6 +1131,10 @@
         {
           "type": "STRING",
           "value": "any"
+        },
+        {
+          "type": "STRING",
+          "value": "none"
         },
         {
           "type": "SEQ",
@@ -1494,7 +1567,7 @@
               },
               {
                 "type": "PATTERN",
-                "value": ".*"
+                "value": "(\\\\+(.|\\r?\\n)|[^\\\\\\n])*"
               }
             ]
           },
@@ -1517,16 +1590,27 @@
           }
         ]
       }
+    },
+    "_whitespace": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\s"
+      }
+    },
+    "not_operator": {
+      "type": "STRING",
+      "value": "!"
     }
   },
   "extras": [
     {
-      "type": "SYMBOL",
-      "name": "comment"
-    },
-    {
       "type": "PATTERN",
       "value": "[\\s\\f\\uFEFF\\u2060\\u200B]|\\r?\\n"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "comment"
     }
   ],
   "conflicts": [],

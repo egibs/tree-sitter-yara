@@ -41,22 +41,32 @@ module.exports = grammar({
         "rule",
         field("name", $.identifier),
         optional($.tag_list),
+        "{",
         field("body", $.rule_body),
+        "}",
       ),
 
-    tag_list: ($) => prec.left(seq(":", $.tag, repeat(seq(/\s+/, $.tag)))),
-
-    tag: ($) => $.identifier,
+    tag_list: ($) =>
+      prec.left(
+        seq(
+          ":",
+          repeat1(seq(optional(/\s+/), alias($.identifier, $.tag))),
+          /\s+/,
+        ),
+      ),
 
     rule_body: ($) =>
-      prec.right(
+      choice(
+        $.meta_section,
+        $.strings_section,
+        $.condition_section,
         seq(
-          "{",
-          optional($.meta_section),
+          $.meta_section,
           optional($.strings_section),
-          $.condition_section,
-          "}",
+          optional($.condition_section),
         ),
+        seq($.strings_section, optional($.condition_section)),
+        $.condition_section,
       ),
 
     meta_section: ($) => seq("meta", ":", repeat1($.meta_definition)),
@@ -187,8 +197,8 @@ module.exports = grammar({
         $.binary_expression,
       ),
 
-    filesize_literal: (_) => alias("filesize", $.filesize),
-    entrypoint_literal: (_) => alias("entrypoint", $.entrypoint),
+    filesize_literal: (_) => alias("filesize", "filesize"),
+    entrypoint_literal: (_) => alias("entrypoint", "entrypoint"),
 
     size_unit: (_) => choice("KB", "MB", "GB"),
 
@@ -230,7 +240,8 @@ module.exports = grammar({
 
     of_expression: ($) => seq($.quantifier, "of", $.string_set),
 
-    quantifier: ($) => choice("all", "any", seq($.integer_literal, "of")),
+    quantifier: ($) =>
+      choice("all", "any", "none", seq($.integer_literal, "of")),
 
     string_set: ($) =>
       choice("them", seq("(", sep1($.string_identifier, ","), ")")),
@@ -317,8 +328,15 @@ module.exports = grammar({
 
     comment: (_) =>
       token(
-        choice(seq("//", /.*/), seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/")),
+        choice(
+          seq("//", /(\\+(.|\r?\n)|[^\\\n])*/),
+          seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/"),
+        ),
       ),
+
+    _whitespace: (_) => token(/\s/),
+
+    not_operator: (_) => "!",
   },
 
   precedences: () => [

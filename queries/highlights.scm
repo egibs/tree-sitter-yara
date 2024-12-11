@@ -48,11 +48,10 @@
 
 ; Rule names
 (rule_definition
-  name: (identifier) @function)
+  name: (identifier) @module)
 
 ; Tags
-(tag_list
-  [(identifier) (tag)] @tag)
+((tag) @tag)
 
 ; Meta definitions
 (meta_definition
