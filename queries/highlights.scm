@@ -36,7 +36,6 @@
   "all"
   "any"
   "none"
-  "at"
   "in"
 ] @keyword.operator
 
@@ -61,11 +60,8 @@
 
 ; Strings
 (double_quoted_string) @string
-["\""] @string.delimiter
-
 (single_quoted_string) @string
-["'"] @string.delimiter
-(escape_sequence) @string.escape
+(escape) @string.escape
 
 ; Hex strings
 (hex_string) @string.special
@@ -74,11 +70,8 @@
 (hex_jump) @constant.numeric
 
 ; Regular expressions
-(regex_string
-  "/" @string.delimiter
-  (pattern) @string.regexp
-  "/" @string.delimiter)
-
+(regex_string) @string.regexp
+(pattern) @string.regexp
 
 ; Boolean values
 (boolean_literal) @constant.boolean

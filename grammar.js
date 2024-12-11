@@ -102,16 +102,26 @@ module.exports = grammar({
 
     double_quoted_string: ($) =>
       seq(
-        alias('"', $.string_delimiter),
-        optional($._string_content),
-        alias('"', $.string_delimiter),
+        '"',
+        repeat(
+          choice(
+            token.immediate(prec(1, /[^"\\]+/)),
+            alias($.escape_sequence, $.escape), // Add alias
+          ),
+        ),
+        '"',
       ),
 
     single_quoted_string: ($) =>
       seq(
-        alias("'", $.string_delimiter),
-        optional($._string_content),
-        alias("'", $.string_delimiter),
+        "'",
+        repeat(
+          choice(
+            token.immediate(prec(1, /[^'\\]+/)),
+            alias($.escape_sequence, $.escape), // Add alias
+          ),
+        ),
+        "'",
       ),
 
     escape_sequence: (_) =>

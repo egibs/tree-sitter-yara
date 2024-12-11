@@ -321,10 +321,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "string_delimiter",
+          "type": "escape",
           "named": true
         }
       ]
@@ -877,10 +877,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "string_delimiter",
+          "type": "escape",
           "named": true
         }
       ]
@@ -1224,6 +1224,10 @@
     "named": false
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
     "type": "#",
     "named": false
   },
@@ -1233,6 +1237,10 @@
   },
   {
     "type": "%",
+    "named": false
+  },
+  {
+    "type": "'",
     "named": false
   },
   {
@@ -1362,6 +1370,10 @@
   {
     "type": "entrypoint",
     "named": false
+  },
+  {
+    "type": "escape",
+    "named": true
   },
   {
     "type": "false",
