@@ -1144,6 +1144,10 @@
           "value": "any"
         },
         {
+          "type": "STRING",
+          "value": "none"
+        },
+        {
           "type": "SEQ",
           "members": [
             {
