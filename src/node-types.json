@@ -321,10 +321,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "escape_sequence",
+          "type": "string_delimiter",
           "named": true
         }
       ]
@@ -760,21 +760,6 @@
     }
   },
   {
-    "type": "pattern",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "escape_sequence",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "quantifier",
     "named": true,
     "fields": {},
@@ -814,6 +799,10 @@
       "types": [
         {
           "type": "pattern",
+          "named": true
+        },
+        {
+          "type": "string_delimiter",
           "named": true
         },
         {
@@ -888,10 +877,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "escape_sequence",
+          "type": "string_delimiter",
           "named": true
         }
       ]
@@ -1235,10 +1224,6 @@
     "named": false
   },
   {
-    "type": "\"",
-    "named": false
-  },
-  {
     "type": "#",
     "named": false
   },
@@ -1248,10 +1233,6 @@
   },
   {
     "type": "%",
-    "named": false
-  },
-  {
-    "type": "'",
     "named": false
   },
   {
@@ -1280,10 +1261,6 @@
   },
   {
     "type": "..",
-    "named": false
-  },
-  {
-    "type": "/",
     "named": false
   },
   {
@@ -1387,10 +1364,6 @@
     "named": false
   },
   {
-    "type": "escape_sequence",
-    "named": true
-  },
-  {
     "type": "false",
     "named": false
   },
@@ -1479,6 +1452,10 @@
     "named": false
   },
   {
+    "type": "pattern",
+    "named": true
+  },
+  {
     "type": "private",
     "named": false
   },
@@ -1489,6 +1466,10 @@
   {
     "type": "startswith",
     "named": false
+  },
+  {
+    "type": "string_delimiter",
+    "named": true
   },
   {
     "type": "strings",

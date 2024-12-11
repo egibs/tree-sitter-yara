@@ -20,7 +20,9 @@ const PREC = {
 module.exports = grammar({
   name: "yara",
 
-  extras: ($) => [/[\s\f\uFEFF\u2060\u200B]|\r?\n/, $.comment],
+  externals: ($) => [$._string_content, $._pattern_content],
+
+  extras: ($) => [$.comment, /[\s\f\uFEFF\u2060\u200B]|\r?\n/],
 
   word: ($) => $.identifier,
 
@@ -95,18 +97,21 @@ module.exports = grammar({
 
     text_string: ($) => choice($.double_quoted_string, $.single_quoted_string),
 
+    _string_delimiter: ($) => choice('"', "'"),
+    _regex_delimiter: ($) => "/",
+
     double_quoted_string: ($) =>
       seq(
-        '"',
-        repeat(choice(token.immediate(prec(1, /[^"\\]+/)), $.escape_sequence)),
-        '"',
+        alias('"', $.string_delimiter),
+        optional($._string_content),
+        alias('"', $.string_delimiter),
       ),
 
     single_quoted_string: ($) =>
       seq(
-        "'",
-        repeat(choice(token.immediate(prec(1, /[^'\\]+/)), $.escape_sequence)),
-        "'",
+        alias("'", $.string_delimiter),
+        optional($._string_content),
+        alias("'", $.string_delimiter),
       ),
 
     escape_sequence: (_) =>
@@ -161,9 +166,9 @@ module.exports = grammar({
       prec.right(
         1,
         seq(
-          "/",
-          alias($.regex_string_content, $.pattern),
-          "/",
+          alias("/", $.string_delimiter),
+          alias($._pattern_content, $.pattern),
+          alias("/", $.string_delimiter),
           optional($.string_modifiers),
         ),
       ),
