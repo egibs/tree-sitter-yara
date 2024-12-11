@@ -1,20 +1,19 @@
+; Comments
+(comment) @comment
+
 ; Keywords
 [
   "rule"
   "global"
   "private"
   "import"
-  "include"
+  "meta"
   "strings"
   "condition"
-  "meta"
 ] @keyword
 
-; Keywords (condition)
+; Comparison and logical operators
 [
-  "and"
-  "or"
-  "not"
   "matches"
   "contains"
   "icontains"
@@ -23,21 +22,32 @@
   "istartswith"
   "endswith"
   "iendswith"
-  "for"
+  "and"
+  "or"
+  "not"
+  "=="
+  "!="
+  "<"
+  ">"
+  ">="
+  "<="
   "of"
-  "in"
+  "for"
   "all"
   "any"
   "none"
-  "them"
-  "filesize"
-  "entrypoint"
+  "at"
+  "in"
 ] @keyword.operator
+
+; Meta fields
+(meta_definition
+  key: (identifier) @property)
 
 ; String modifiers
 [
-  "ascii"
   "wide"
+  "ascii"
   "nocase"
   "fullword"
   "xor"
@@ -45,57 +55,52 @@
   "base64wide"
 ] @keyword.modifier
 
-; Rule names
-(rule_definition
-  name: (identifier) @module)
-
-; Tags
-((tag) @tag)
-
-; Meta definitions
-(meta_definition
-  key: (identifier) @property)
-
-; String identifiers
-(string_identifier
-  (identifier)? @string.special)
-
-; Constants
-(boolean_literal) @constant.builtin
-
+; Numbers and sizes
 (integer_literal) @constant.numeric
 (size_unit) @constant.numeric
 
 ; Strings
 (double_quoted_string) @string
+["\""] @string.delimiter
+
 (single_quoted_string) @string
+["'"] @string.delimiter
 (escape_sequence) @string.escape
 
 ; Hex strings
 (hex_string) @string.special
 (hex_byte) @constant.numeric
 (hex_wildcard) @constant.builtin
+(hex_jump) @constant.numeric
 
-; Regex strings
-(regex_string) @string.regexp
-(pattern) @string.regexp
+; Regular expressions
+(regex_string
+  "/" @string.delimiter
+  (pattern) @string.regexp
+  "/" @string.delimiter)
 
-; Operators
+
+; Boolean values
+(boolean_literal) @constant.boolean
+
+; String identifiers
+(string_identifier) @variable
+
+; Built-ins
 [
-  ">"
-  "<"
-  "=="
-  "<="
-  ">="
-  "!="
-  "+"
-  "-"
-  "*"
-  "\\"
-  "%"
-] @operator
+  "true"
+  "false"
+  "filesize"
+  "entrypoint"
+] @constant.builtin
 
-[":" "=" "{" "}" "(" ")" "[" "]" "$" "#" "@" "!" ".." "|" ","] @punctuation.delimiter
+; Tags
+(tag_list
+  [(identifier) (tag)] @tag)
 
-; Comments
-(comment) @comment
+; Punctuation
+["{" "}" "[" "]" "(" ")" "$" "#" "@" "=" ":" "," ".." "?" "|"] @punctuation.delimiter
+
+; Rule name
+(rule_definition
+  name: (identifier) @function)

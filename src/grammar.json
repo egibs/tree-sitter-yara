@@ -536,7 +536,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "hex_alternative"
+                "name": "hex_alt_sequence"
               }
             ]
           }
@@ -547,13 +547,61 @@
         }
       ]
     },
-    "hex_byte": {
-      "type": "PATTERN",
-      "value": "[0-9a-fA-F]{2}"
-    },
-    "hex_wildcard": {
-      "type": "STRING",
-      "value": "?"
+    "hex_alt_sequence": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "hex_byte"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "hex_wildcard"
+                }
+              ]
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "|"
+                  },
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "hex_byte"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "hex_wildcard"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
     },
     "hex_jump": {
       "type": "SEQ",
@@ -595,6 +643,14 @@
           "value": "]"
         }
       ]
+    },
+    "hex_byte": {
+      "type": "PATTERN",
+      "value": "[0-9a-fA-F]{2}"
+    },
+    "hex_wildcard": {
+      "type": "STRING",
+      "value": "?"
     },
     "hex_alternative": {
       "type": "SEQ",

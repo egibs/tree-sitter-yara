@@ -511,7 +511,7 @@
     }
   },
   {
-    "type": "hex_alternative",
+    "type": "hex_alt_sequence",
     "named": true,
     "fields": {},
     "children": {
@@ -520,6 +520,10 @@
       "types": [
         {
           "type": "hex_byte",
+          "named": true
+        },
+        {
+          "type": "hex_wildcard",
           "named": true
         }
       ]
@@ -549,7 +553,7 @@
       "required": true,
       "types": [
         {
-          "type": "hex_alternative",
+          "type": "hex_alt_sequence",
           "named": true
         },
         {

@@ -127,9 +127,21 @@ module.exports = grammar({
       seq(
         "{",
         repeat1(
-          choice($.hex_byte, $.hex_wildcard, $.hex_jump, $.hex_alternative),
+          choice($.hex_byte, $.hex_wildcard, $.hex_jump, $.hex_alt_sequence),
         ),
         "}",
+      ),
+
+    hex_alt_sequence: ($) =>
+      seq("(", sep1(choice($.hex_byte, $.hex_wildcard), "|"), ")"),
+
+    hex_jump: ($) =>
+      seq(
+        "[",
+        optional($.integer_literal),
+        "-",
+        optional($.integer_literal),
+        "]",
       ),
 
     hex_byte: (_) => /[0-9a-fA-F]{2}/,
