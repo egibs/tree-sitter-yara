@@ -80,8 +80,8 @@
 
 ; Built-ins
 [
-  "filesize"
-  "entrypoint"
+  (filesize_keyword)
+  (entrypoint_keyword)
 ] @constant.builtin
 
 ; Tags

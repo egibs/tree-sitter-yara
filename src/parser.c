@@ -56,8 +56,8 @@ enum ts_symbol_identifiers {
   anon_sym_base64wide = 38,
   anon_sym_xor = 39,
   anon_sym_condition = 40,
-  sym_filesize = 41,
-  sym_entrypoint = 42,
+  sym_filesize_keyword = 41,
+  sym_entrypoint_keyword = 42,
   anon_sym_KB = 43,
   anon_sym_MB = 44,
   anon_sym_GB = 45,
@@ -206,8 +206,8 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_base64wide] = "base64wide",
   [anon_sym_xor] = "xor",
   [anon_sym_condition] = "condition",
-  [sym_filesize] = "filesize",
-  [sym_entrypoint] = "entrypoint",
+  [sym_filesize_keyword] = "filesize_keyword",
+  [sym_entrypoint_keyword] = "entrypoint_keyword",
   [anon_sym_KB] = "KB",
   [anon_sym_MB] = "MB",
   [anon_sym_GB] = "GB",
@@ -356,8 +356,8 @@ static const TSSymbol ts_symbol_map[] = {
   [anon_sym_base64wide] = anon_sym_base64wide,
   [anon_sym_xor] = anon_sym_xor,
   [anon_sym_condition] = anon_sym_condition,
-  [sym_filesize] = sym_filesize,
-  [sym_entrypoint] = sym_entrypoint,
+  [sym_filesize_keyword] = sym_filesize_keyword,
+  [sym_entrypoint_keyword] = sym_entrypoint_keyword,
   [anon_sym_KB] = anon_sym_KB,
   [anon_sym_MB] = anon_sym_MB,
   [anon_sym_GB] = anon_sym_GB,
@@ -629,11 +629,11 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = false,
   },
-  [sym_filesize] = {
+  [sym_filesize_keyword] = {
     .visible = true,
     .named = true,
   },
-  [sym_entrypoint] = {
+  [sym_entrypoint_keyword] = {
     .visible = true,
     .named = true,
   },
@@ -2412,7 +2412,7 @@ static bool ts_lex_keywords(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'n') ADVANCE(180);
       END_STATE();
     case 171:
-      ACCEPT_TOKEN(sym_filesize);
+      ACCEPT_TOKEN(sym_filesize_keyword);
       END_STATE();
     case 172:
       ACCEPT_TOKEN(anon_sym_fullword);
@@ -2457,7 +2457,7 @@ static bool ts_lex_keywords(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(anon_sym_base64wide);
       END_STATE();
     case 186:
-      ACCEPT_TOKEN(sym_entrypoint);
+      ACCEPT_TOKEN(sym_entrypoint_keyword);
       END_STATE();
     case 187:
       if (lookahead == 'h') ADVANCE(189);
@@ -2689,8 +2689,8 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_base64wide] = ACTIONS(1),
     [anon_sym_xor] = ACTIONS(1),
     [anon_sym_condition] = ACTIONS(1),
-    [sym_filesize] = ACTIONS(1),
-    [sym_entrypoint] = ACTIONS(1),
+    [sym_filesize_keyword] = ACTIONS(1),
+    [sym_entrypoint_keyword] = ACTIONS(1),
     [anon_sym_KB] = ACTIONS(1),
     [anon_sym_MB] = ACTIONS(1),
     [anon_sym_GB] = ACTIONS(1),
@@ -2795,8 +2795,8 @@ static const uint16_t ts_small_parse_table[] = {
       sym_double_quoted_string,
       sym_single_quoted_string,
     ACTIONS(17), 3,
-      sym_filesize,
-      sym_entrypoint,
+      sym_filesize_keyword,
+      sym_entrypoint_keyword,
       sym_identifier,
     ACTIONS(37), 3,
       anon_sym_all,
@@ -2870,8 +2870,8 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_any,
       anon_sym_none,
     ACTIONS(45), 3,
-      sym_filesize,
-      sym_entrypoint,
+      sym_filesize_keyword,
+      sym_entrypoint_keyword,
       sym_identifier,
     STATE(32), 13,
       sym_string_identifier,
@@ -2941,8 +2941,8 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_any,
       anon_sym_none,
     ACTIONS(47), 3,
-      sym_filesize,
-      sym_entrypoint,
+      sym_filesize_keyword,
+      sym_entrypoint_keyword,
       sym_identifier,
     STATE(30), 13,
       sym_string_identifier,
@@ -3012,8 +3012,8 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_any,
       anon_sym_none,
     ACTIONS(49), 3,
-      sym_filesize,
-      sym_entrypoint,
+      sym_filesize_keyword,
+      sym_entrypoint_keyword,
       sym_identifier,
     STATE(33), 13,
       sym_string_identifier,
@@ -3083,8 +3083,8 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_any,
       anon_sym_none,
     ACTIONS(51), 3,
-      sym_filesize,
-      sym_entrypoint,
+      sym_filesize_keyword,
+      sym_entrypoint_keyword,
       sym_identifier,
     STATE(36), 13,
       sym_string_identifier,
@@ -3154,8 +3154,8 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_any,
       anon_sym_none,
     ACTIONS(53), 3,
-      sym_filesize,
-      sym_entrypoint,
+      sym_filesize_keyword,
+      sym_entrypoint_keyword,
       sym_identifier,
     STATE(34), 13,
       sym_string_identifier,
@@ -3225,8 +3225,8 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_any,
       anon_sym_none,
     ACTIONS(55), 3,
-      sym_filesize,
-      sym_entrypoint,
+      sym_filesize_keyword,
+      sym_entrypoint_keyword,
       sym_identifier,
     STATE(35), 13,
       sym_string_identifier,
@@ -3296,8 +3296,8 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_any,
       anon_sym_none,
     ACTIONS(57), 3,
-      sym_filesize,
-      sym_entrypoint,
+      sym_filesize_keyword,
+      sym_entrypoint_keyword,
       sym_identifier,
     STATE(29), 13,
       sym_string_identifier,
@@ -3367,8 +3367,8 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_any,
       anon_sym_none,
     ACTIONS(59), 3,
-      sym_filesize,
-      sym_entrypoint,
+      sym_filesize_keyword,
+      sym_entrypoint_keyword,
       sym_identifier,
     STATE(38), 13,
       sym_string_identifier,
@@ -3438,8 +3438,8 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_any,
       anon_sym_none,
     ACTIONS(61), 3,
-      sym_filesize,
-      sym_entrypoint,
+      sym_filesize_keyword,
+      sym_entrypoint_keyword,
       sym_identifier,
     STATE(43), 13,
       sym_string_identifier,

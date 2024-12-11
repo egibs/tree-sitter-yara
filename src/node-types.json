@@ -16,11 +16,11 @@
             "named": true
           },
           {
-            "type": "entrypoint",
+            "type": "entrypoint_keyword",
             "named": true
           },
           {
-            "type": "filesize",
+            "type": "filesize_keyword",
             "named": true
           },
           {
@@ -176,11 +176,11 @@
             "named": true
           },
           {
-            "type": "entrypoint",
+            "type": "entrypoint_keyword",
             "named": true
           },
           {
-            "type": "filesize",
+            "type": "filesize_keyword",
             "named": true
           },
           {
@@ -257,11 +257,11 @@
           "named": true
         },
         {
-          "type": "entrypoint",
+          "type": "entrypoint_keyword",
           "named": true
         },
         {
-          "type": "filesize",
+          "type": "filesize_keyword",
           "named": true
         },
         {
@@ -347,11 +347,11 @@
           "named": true
         },
         {
-          "type": "entrypoint",
+          "type": "entrypoint_keyword",
           "named": true
         },
         {
-          "type": "filesize",
+          "type": "filesize_keyword",
           "named": true
         },
         {
@@ -430,11 +430,11 @@
           "named": true
         },
         {
-          "type": "entrypoint",
+          "type": "entrypoint_keyword",
           "named": true
         },
         {
-          "type": "filesize",
+          "type": "filesize_keyword",
           "named": true
         },
         {
@@ -687,11 +687,11 @@
           "named": true
         },
         {
-          "type": "entrypoint",
+          "type": "entrypoint_keyword",
           "named": true
         },
         {
-          "type": "filesize",
+          "type": "filesize_keyword",
           "named": true
         },
         {
@@ -1143,11 +1143,11 @@
             "named": true
           },
           {
-            "type": "entrypoint",
+            "type": "entrypoint_keyword",
             "named": true
           },
           {
-            "type": "filesize",
+            "type": "filesize_keyword",
             "named": true
           },
           {
@@ -1373,7 +1373,7 @@
     "named": false
   },
   {
-    "type": "entrypoint",
+    "type": "entrypoint_keyword",
     "named": true
   },
   {
@@ -1385,7 +1385,7 @@
     "named": false
   },
   {
-    "type": "filesize",
+    "type": "filesize_keyword",
     "named": true
   },
   {

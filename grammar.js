@@ -208,8 +208,8 @@ module.exports = grammar({
         $.string_count,
         $.string_offset,
         $.string_length,
-        $.filesize,
-        $.entrypoint,
+        $.filesize_keyword,
+        $.entrypoint_keyword,
         $.for_expression,
         $.for_of_expression,
         $.of_expression,
@@ -218,8 +218,8 @@ module.exports = grammar({
         $.binary_expression,
       ),
 
-    filesize: (_) => "filesize",
-    entrypoint: (_) => "entrypoint",
+    filesize_keyword: (_) => "filesize",
+    entrypoint_keyword: (_) => "entrypoint",
 
     size_unit: (_) => choice("KB", "MB", "GB"),
 

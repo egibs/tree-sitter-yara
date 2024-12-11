@@ -866,11 +866,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "filesize"
+          "name": "filesize_keyword"
         },
         {
           "type": "SYMBOL",
-          "name": "entrypoint"
+          "name": "entrypoint_keyword"
         },
         {
           "type": "SYMBOL",
@@ -898,11 +898,11 @@
         }
       ]
     },
-    "filesize": {
+    "filesize_keyword": {
       "type": "STRING",
       "value": "filesize"
     },
-    "entrypoint": {
+    "entrypoint_keyword": {
       "type": "STRING",
       "value": "entrypoint"
     },
