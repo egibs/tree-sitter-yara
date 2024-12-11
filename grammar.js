@@ -45,7 +45,13 @@ module.exports = grammar({
       ),
 
     tag_list: ($) =>
-      prec.left(seq(":", $.identifier, repeat(seq(/\s+/, $.identifier)))),
+      prec.left(
+        seq(
+          ":",
+          alias($.identifier, $.first_tag),
+          repeat(seq(/\s+/, alias($.identifier, $.additional_tag))),
+        ),
+      ),
 
     rule_body: ($) =>
       prec.right(
