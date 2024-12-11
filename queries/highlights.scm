@@ -51,8 +51,7 @@
   name: (identifier) @function)
 
 ; Tags
-(first_tag) @tag
-(additional_tag) @tag
+(tag) @tag
 
 ; Meta definitions
 (meta_definition
