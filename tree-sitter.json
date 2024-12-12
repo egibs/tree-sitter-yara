@@ -4,16 +4,16 @@
       "name": "yara",
       "camelcase": "Yara",
       "scope": "source.yara",
-      "file-types": [
-        ".yara",
-        ".yar"
-      ],
-      "injection-regex": "^yara$"
+      "file-types": ["yara", "yar"],
+      "injection-regex": "^yara$",
+      "highlights": ["queries/highlights.scm"],
+      "injections": ["queries/injections.scm"],
+      "locals": ["queries/locals.scm"]
     }
   ],
   "metadata": {
     "version": "0.0.1",
-    "license": "MIT",
+    "license": "Apache License 2.0",
     "description": "Tree-sitter plugin for the Yara language.",
     "authors": [
       {

@@ -58,6 +58,7 @@
 (double_quoted_string) @string
 (single_quoted_string) @string
 (escape_sequence) @string.escape
+(text_string) @string
 
 ; Hex strings
 (hex_string) @string.special
@@ -85,9 +86,9 @@
 
 
 ; String identifiers
-(string_identifier) @variable.special
-(string_reference
-  [(identifier) (string_identifier)] @variable.special)
+"$" @string.special.symbol
+(identifier) @string
+(string_identifier) @string.special.symbol
 
 ; Built-ins
 [
@@ -109,7 +110,6 @@
   "]"
   "("
   ")"
-  "$"
   "#"
   "@"
   ".."
@@ -119,7 +119,7 @@
   "/"
   "\""
   "'"
-] @punctuation.delimiter
+] @string.special.symbol
 
 ; Rule names
 (rule_definition
