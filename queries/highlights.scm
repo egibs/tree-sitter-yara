@@ -3,14 +3,20 @@
 
 ; Keywords
 [
-  "rule"
   "global"
-  "private"
   "import"
+  "private"
+] @constant.builtin
+
+[
+  "rule"
+] @function
+
+[
   "meta"
   "strings"
   "condition"
-] @keyword
+] @property
 
 ; Operators
 [
@@ -37,7 +43,7 @@
   "any"
   "none"
   "in"
-] @keyword.operator
+] @string.special
 
 ; String modifiers
 [
@@ -58,7 +64,7 @@
 (double_quoted_string) @string
 (single_quoted_string) @string
 (escape_sequence) @string.escape
-(text_string) @string
+(text_string) @text.literal
 
 ; Hex strings
 (hex_string) @string.special
@@ -119,12 +125,13 @@
   "/"
   "\""
   "'"
+  "*"
 ] @string.special.symbol
 
 ; Rule names
 (rule_definition
-  name: (identifier) @function)
+  name: (identifier) @string.special)
 
 ; Meta definitions
 (meta_definition
-  key: (identifier) @property)
+  key: (identifier) @string.special)
